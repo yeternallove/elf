@@ -34,6 +34,10 @@ public enum Status {
      */
     REQUEST_NOT_FOUND(404, "服务不存在"),
     /**
+     * 请求方式不支持！
+     */
+    HTTP_BAD_METHOD(405, "请求方式不支持！"),
+    /**
      * 未知异常
      */
     UNKNOWN_ERROR(500, "服务器内部错误"),
