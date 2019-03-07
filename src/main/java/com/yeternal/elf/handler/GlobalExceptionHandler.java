@@ -2,7 +2,7 @@ package com.yeternal.elf.handler;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.json.JSONUtil;
-import com.yeternal.elf.common.ApiResponse;
+import com.yeternal.elf.common.R;
 import com.yeternal.elf.common.Status;
 import com.yeternal.elf.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
@@ -36,34 +36,34 @@ import javax.validation.ConstraintViolationException;
 public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ApiResponse handlerException(Exception e) {
+    public R handlerException(Exception e) {
         if (e instanceof NoHandlerFoundException) {
             log.error("【全局异常拦截】NoHandlerFoundException: 请求方法 {}, 请求路径 {}", ((NoHandlerFoundException) e).getRequestURL(), ((NoHandlerFoundException) e).getHttpMethod());
-            return ApiResponse.ofStatus(Status.REQUEST_NOT_FOUND);
+            return R.ofStatus(Status.REQUEST_NOT_FOUND);
         } else if (e instanceof HttpRequestMethodNotSupportedException) {
             log.error("【全局异常拦截】HttpRequestMethodNotSupportedException: 当前请求方式 {}, 支持请求方式 {}", ((HttpRequestMethodNotSupportedException) e).getMethod(), JSONUtil.toJsonStr(((HttpRequestMethodNotSupportedException) e).getSupportedHttpMethods()));
-            return ApiResponse.ofStatus(Status.HTTP_BAD_METHOD);
+            return R.ofStatus(Status.HTTP_BAD_METHOD);
         } else if (e instanceof MethodArgumentNotValidException) {
             log.error("【全局异常拦截】MethodArgumentNotValidException", e);
-            return ApiResponse.of(Status.BAD_REQUEST.getCode(), ((MethodArgumentNotValidException) e).getBindingResult()
+            return R.of(Status.BAD_REQUEST.getCode(), ((MethodArgumentNotValidException) e).getBindingResult()
                     .getAllErrors()
                     .get(0)
                     .getDefaultMessage(), null);
         } else if (e instanceof ConstraintViolationException) {
             log.error("【全局异常拦截】ConstraintViolationException", e);
-            return ApiResponse.of(Status.BAD_REQUEST.getCode(), CollUtil.getFirst(((ConstraintViolationException) e).getConstraintViolations())
+            return R.of(Status.BAD_REQUEST.getCode(), CollUtil.getFirst(((ConstraintViolationException) e).getConstraintViolations())
                     .getMessage(), null);
         } else if (e instanceof MethodArgumentTypeMismatchException) {
             log.error("【全局异常拦截】MethodArgumentTypeMismatchException: 参数名 {}, 异常信息 {}", ((MethodArgumentTypeMismatchException) e).getName(), ((MethodArgumentTypeMismatchException) e).getMessage());
-            return ApiResponse.ofStatus(Status.PARAM_NOT_MATCH);
+            return R.ofStatus(Status.PARAM_NOT_MATCH);
         } else if (e instanceof HttpMessageNotReadableException) {
             log.error("【全局异常拦截】HttpMessageNotReadableException: 错误信息 {}", ((HttpMessageNotReadableException) e).getMessage());
-            return ApiResponse.ofStatus(Status.PARAM_NOT_NULL);
+            return R.ofStatus(Status.PARAM_NOT_NULL);
         } else if (e instanceof BaseException) {
             log.error("【全局异常拦截】DataManagerException: 状态码 {}, 异常信息 {}", ((BaseException) e).getCode(), e.getMessage());
-            return ApiResponse.ofException((BaseException) e);
+            return R.ofException((BaseException) e);
         }
         log.error("【全局异常拦截】: 异常信息 {}: {} ", e.getClass().getSimpleName(), e.getMessage());
-        return ApiResponse.ofStatus(Status.UNKNOWN_ERROR);
+        return R.ofStatus(Status.UNKNOWN_ERROR);
     }
 }

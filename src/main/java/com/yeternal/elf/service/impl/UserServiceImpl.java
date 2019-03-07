@@ -1,32 +1,35 @@
 package com.yeternal.elf.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yeternal.elf.common.PageResult;
 import com.yeternal.elf.mapper.UserMapper;
-import com.yeternal.elf.model.dto.PasswordDTO;
 import com.yeternal.elf.model.dto.UserDTO;
 import com.yeternal.elf.model.entity.User;
+import com.yeternal.elf.model.payload.LoginRequest;
+import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.query.UserQuery;
 import com.yeternal.elf.model.vo.UserVO;
 import com.yeternal.elf.service.UserService;
+import com.yeternal.elf.util.BeanConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
  * <p>
- *
+ * 用户管理
  * </p>
  *
  * @package: com.yeternal.elf.service.impl
- * @description:
+ * @description: 用户管理
  * @author: eternallove
  * @date: Created in 2019/3/2 18:12
  * @copyright: Copyright (c) 2019
@@ -39,8 +42,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public void save(UserDTO userDTO) {
-        final User user = new User();
-        BeanUtil.copyProperties(userDTO, user);
+        final User user = BeanConverter.toUser(userDTO);
         final String salt = IdUtil.fastSimpleUUID();
         final String password = getEncryptedPassword(userDTO.getPassword(), salt);
         user.setSalt(salt).setPassword(password);
@@ -54,13 +56,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public void update(Long id, UserDTO userDTO) {
-        final User user = new User();
-        BeanUtil.copyProperties(userDTO, user);
-        updateById(user);
+        updateById(BeanConverter.toUser(userDTO));
     }
 
     @Override
-    public void updatePassword(Long id, PasswordDTO passwordDTO) {
+    public void updatePassword(Long id, PasswordRequest passwordDTO) {
         User user = getById(id);
         final User user2 = new User();
         user2.setId(id).setPassword(getEncryptedPassword(passwordDTO.getNewPwd(), user.getSalt()));
@@ -69,28 +69,34 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public UserVO getUser(Long id) {
-        UserVO userVO = new UserVO();
-        BeanUtil.copyProperties(getById(id), userVO);
-        return userVO;
+        return BeanConverter.toUserVO(getById(id));
     }
 
     @Override
     public PageResult<UserVO> listUser(UserQuery userQuery) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         Page<User> page = new Page<>(userQuery.getCurrentPage(), userQuery.getPageSize());
-        List<UserVO> list = page(page, wrapper).getRecords().stream().map(user -> {
-            UserVO userVO = new UserVO();
-            BeanUtil.copyProperties(user, userVO);
-            return userVO;
-        }).collect(Collectors.toList());
+        List<UserVO> list = page(page, wrapper).getRecords().stream().map(BeanConverter::toUserVO).collect(Collectors.toList());
         return PageResult.of(count(), list);
+    }
+
+    @Override
+    public UserVO login(LoginRequest loginRequest) {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        String name = loginRequest.getUsernameOrEmailOrPhone();
+        wrapper.lambda().or(n -> n.eq(User::getName, name).eq(User::getEmail, name).eq(User::getPhoneNumber, name));
+        User user = getOne(wrapper);
+        if (Objects.nonNull(user) && checkPassword(loginRequest.getPassword(), user.getSalt(), user.getPassword())) {
+            return BeanConverter.toUserVO(user);
+        }
+        return null;
     }
 
     private String getEncryptedPassword(String pwd, String salt) {
         return SecureUtil.md5(pwd + salt);
     }
 
-    private boolean checkPassword() {
-        return false;
+    private boolean checkPassword(String pwd, String salt, String cipher) {
+        return StrUtil.equals(getEncryptedPassword(pwd, salt), cipher);
     }
 }

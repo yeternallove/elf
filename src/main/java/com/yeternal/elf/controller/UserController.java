@@ -1,7 +1,7 @@
 package com.yeternal.elf.controller;
 
-import com.yeternal.elf.common.ApiResponse;
-import com.yeternal.elf.model.dto.PasswordDTO;
+import com.yeternal.elf.common.R;
+import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.dto.UserDTO;
 import com.yeternal.elf.model.query.UserQuery;
 import com.yeternal.elf.service.UserService;
@@ -38,24 +38,24 @@ public class UserController {
      * 新增用户
      *
      * @param userDTO {@link UserDTO}
-     * @return {@link ApiResponse}
+     * @return {@link R}
      */
     @PostMapping
-    public ApiResponse save(@Validated @RequestBody UserDTO userDTO) {
+    public R save(@Validated @RequestBody UserDTO userDTO) {
         userService.save(userDTO);
-        return ApiResponse.ofSuccess();
+        return R.ofSuccess();
     }
 
     /**
      * 删除用户
      *
      * @param id 用户id
-     * @return {@link ApiResponse}
+     * @return {@link R}
      */
     @DeleteMapping("/{id}")
-    public ApiResponse delete(@PathVariable Long id) {
+    public R delete(@PathVariable Long id) {
         userService.delete(id);
-        return ApiResponse.ofSuccess();
+        return R.ofSuccess();
     }
 
     /**
@@ -63,58 +63,58 @@ public class UserController {
      *
      * @param id      用户id
      * @param userDTO {@link UserDTO}
-     * @return {@link ApiResponse}
+     * @return {@link R}
      */
     @PutMapping("/{id}")
-    public ApiResponse update(@PathVariable Long id, @Validated @RequestBody UserDTO userDTO) {
+    public R update(@PathVariable Long id, @Validated @RequestBody UserDTO userDTO) {
         userService.update(id, userDTO);
-        return ApiResponse.ofSuccess();
+        return R.ofSuccess();
     }
 
     /**
      * 修改用户密码
      *
-     * @param passwordDTO {@link PasswordDTO}
-     * @return {@link ApiResponse}
+     * @param passwordDTO {@link PasswordRequest}
+     * @return {@link R}
      */
     @PutMapping(value = "/{id}", params = "change")
-    public ApiResponse changePassword(@PathVariable Long id, @Validated @RequestBody PasswordDTO passwordDTO) {
+    public R changePassword(@PathVariable Long id, @Validated @RequestBody PasswordRequest passwordDTO) {
         userService.updatePassword(id, passwordDTO);
-        return ApiResponse.ofSuccess();
+        return R.ofSuccess();
     }
 
     /**
      * 重置用户密码
      *
-     * @param passwordDTO {@link PasswordDTO}
-     * @return {@link ApiResponse}
+     * @param passwordDTO {@link PasswordRequest}
+     * @return {@link R}
      */
     @PutMapping(value = "/{id}", params = "reset")
-    public ApiResponse resetPassword(@PathVariable Long id, @Validated @RequestBody PasswordDTO passwordDTO) {
+    public R resetPassword(@PathVariable Long id, @Validated @RequestBody PasswordRequest passwordDTO) {
         userService.updatePassword(id, passwordDTO);
-        return ApiResponse.ofSuccess();
+        return R.ofSuccess();
     }
 
     /**
      * 获取单个用户详情
      *
      * @param id 用户id
-     * @return {@link ApiResponse}
+     * @return {@link R}
      */
     @GetMapping("/{id}")
-    public ApiResponse getUser(@PathVariable Long id) {
-        return ApiResponse.ofSuccess(userService.getUser(id));
+    public R getUser(@PathVariable Long id) {
+        return R.ofSuccess(userService.getUser(id));
     }
 
     /**
      * 获取用户列表
      *
      * @param userQuery {@link UserQuery}
-     * @return {@link ApiResponse}
+     * @return {@link R}
      */
     @GetMapping("/list")
-    public ApiResponse listUser(UserQuery userQuery) {
-        return ApiResponse.ofSuccess(userService.listUser(userQuery));
+    public R listUser(UserQuery userQuery) {
+        return R.ofSuccess(userService.listUser(userQuery));
     }
 
 }

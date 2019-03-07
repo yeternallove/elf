@@ -21,7 +21,7 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-public class ApiResponse implements Serializable {
+public class R implements Serializable {
     private static final long serialVersionUID = 29170886762376260L;
     /**
      * 状态码
@@ -45,7 +45,7 @@ public class ApiResponse implements Serializable {
      * @param message 返回内容
      * @param data    返回数据
      */
-    private ApiResponse(Integer code, String message, Object data) {
+    private R(Integer code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.data = data;
@@ -59,8 +59,8 @@ public class ApiResponse implements Serializable {
      * @param data    返回数据
      * @return ApiResponse
      */
-    public static ApiResponse of(Integer code, String message, Object data) {
-        return new ApiResponse(code, message, data);
+    public static R of(Integer code, String message, Object data) {
+        return new R(code, message, data);
     }
 
     /**
@@ -68,7 +68,7 @@ public class ApiResponse implements Serializable {
      *
      * @return ApiResponse
      */
-    public static ApiResponse ofSuccess() {
+    public static R ofSuccess() {
         return ofSuccess(null);
     }
 
@@ -78,7 +78,7 @@ public class ApiResponse implements Serializable {
      * @param data 返回数据
      * @return ApiResponse
      */
-    public static ApiResponse ofSuccess(Object data) {
+    public static R ofSuccess(Object data) {
         return ofStatus(Status.OK, data);
     }
 
@@ -88,7 +88,7 @@ public class ApiResponse implements Serializable {
      * @param message 返回内容
      * @return ApiResponse
      */
-    public static ApiResponse ofMessage(String message) {
+    public static R ofMessage(String message) {
         return of(Status.OK.getCode(), message, null);
     }
 
@@ -98,7 +98,7 @@ public class ApiResponse implements Serializable {
      * @param status 状态 {@link Status}
      * @return ApiResponse
      */
-    public static ApiResponse ofStatus(Status status) {
+    public static R ofStatus(Status status) {
         return ofStatus(status, null);
     }
 
@@ -109,7 +109,7 @@ public class ApiResponse implements Serializable {
      * @param data   返回数据
      * @return ApiResponse
      */
-    public static ApiResponse ofStatus(Status status, Object data) {
+    public static R ofStatus(Status status, Object data) {
         return of(status.getCode(), status.getReasonPhrase(), data);
     }
 
@@ -120,7 +120,7 @@ public class ApiResponse implements Serializable {
      * @param <T> {@link BaseException} 的子类
      * @return ApiResponse
      */
-    public static <T extends BaseException> ApiResponse ofException(T t) {
+    public static <T extends BaseException> R ofException(T t) {
         return of(t.getCode(), t.getMessage(), t.getData());
     }
 }

@@ -1,18 +1,19 @@
 package com.yeternal.elf.service;
 
 import com.yeternal.elf.common.PageResult;
-import com.yeternal.elf.model.dto.PasswordDTO;
+import com.yeternal.elf.model.payload.LoginRequest;
+import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.dto.UserDTO;
 import com.yeternal.elf.model.query.UserQuery;
 import com.yeternal.elf.model.vo.UserVO;
 
 /**
  * <p>
- *
+ * 用户管理
  * </p>
  *
  * @package: com.yeternal.elf.service
- * @description:
+ * @description: 用户管理
  * @author: eternallove
  * @date: Created in 2019/3/2 18:10
  * @copyright: Copyright (c) 2019
@@ -47,12 +48,12 @@ public interface UserService {
      * 更新用户密码
      *
      * @param id          用户id
-     * @param passwordDTO {@link PasswordDTO}
+     * @param passwordDTO {@link PasswordRequest}
      */
-    void updatePassword(Long id, PasswordDTO passwordDTO);
+    void updatePassword(Long id, PasswordRequest passwordDTO);
 
     /**
-     * 获取单个用户
+     * 获取单个用户通过id
      *
      * @param id 用户id
      * @return {@link UserVO}
@@ -66,4 +67,12 @@ public interface UserService {
      * @return {@link UserVO}
      */
     PageResult<UserVO> listUser(UserQuery userQuery);
+
+    /**
+     * 获取单个用户通过用户名、邮箱、手机号（符合任一条件）并校验密码
+     *
+     * @param loginRequest {@link LoginRequest}
+     * @return 登录成功返回 {@link UserVO}
+     */
+    UserVO login(LoginRequest loginRequest);
 }

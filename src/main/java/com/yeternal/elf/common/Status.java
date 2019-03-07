@@ -30,6 +30,10 @@ public enum Status {
      */
     NO_AUTHORIZATION(401, "未经授权的"),
     /**
+     * 用户名或密码错误
+     */
+    LOGIN_INFO_ERROR(402, "用户名或密码错误！"),
+    /**
      * 服务器解析不到用户请求的服务名称
      */
     REQUEST_NOT_FOUND(404, "服务不存在"),
