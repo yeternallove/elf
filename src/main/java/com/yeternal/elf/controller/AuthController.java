@@ -5,8 +5,8 @@ import com.yeternal.elf.common.Status;
 import com.yeternal.elf.model.payload.LoginRequest;
 import com.yeternal.elf.model.vo.UserVO;
 import com.yeternal.elf.service.UserService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,16 +29,12 @@ import java.util.Objects;
  * @modified: eternallove
  */
 @Slf4j
+@AllArgsConstructor
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
     private final UserService userService;
-
-    @Autowired
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping("/login")
     public R login(@Validated @RequestBody LoginRequest loginRequest) {

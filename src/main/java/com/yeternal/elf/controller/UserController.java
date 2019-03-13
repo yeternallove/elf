@@ -1,12 +1,12 @@
 package com.yeternal.elf.controller;
 
 import com.yeternal.elf.common.R;
-import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.dto.UserDTO;
+import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.query.UserQuery;
 import com.yeternal.elf.service.UserService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,15 +24,12 @@ import org.springframework.web.bind.annotation.*;
  * @modified: eternallove
  */
 @Slf4j
+@AllArgsConstructor
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private final UserService userService;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private final UserService userService;
 
     /**
      * 新增用户

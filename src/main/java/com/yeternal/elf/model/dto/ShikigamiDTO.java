@@ -10,20 +10,30 @@ import lombok.Data;
  * @package: com.yeternal.elf.model.dto
  * @description:
  * @author: eternallove
- * @date: Created in 2019/3/4 14:06
+ * @date: Created in 2019/3/13 19:47
  * @copyright: Copyright (c) 2019
  * @version: V1.0
  * @modified: eternallove
  */
 @Data
-public class PasswordDTO {
+public class ShikigamiDTO {
     /**
-     * 原密码
+     * 主键
      */
-    private String oldPwd;
+    private Long id;
 
     /**
-     * 新密码
+     * 式神名
      */
-    private String newPwd;
+    private String name;
+
+    /**
+     * 稀有度
+     */
+    private Integer rare;
+
+    /**
+     * 别称
+     */
+    private String alias;
 }

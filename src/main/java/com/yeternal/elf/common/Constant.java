@@ -14,9 +14,29 @@ package com.yeternal.elf.common;
  * @modified: eternallove
  */
 public interface Constant {
+    /**
+     * 用户状态
+     */
     int USER_DELETE = -1;
     int USER_DISABLE = 0;
     int USER_ENABLE = 1;
+    /**
+     * 稀有度
+     */
+    int RARE_DEFAULT = -1;
+    int RARE_GUA = 0;
+    int RARE_N = 1;
+    int RARE_R = 2;
+    int RARE_SR = 3;
+    int RARE_SSR = 4;
+    int RARE_SP = 5;
+    /**
+     * 探索类别
+     */
+    int EXPLORE = 1;
+    int SEAL = 2;
+    int SECRET = 3;
+
     /**
      * 默认当前页
      */
