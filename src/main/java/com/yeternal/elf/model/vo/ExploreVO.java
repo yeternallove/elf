@@ -1,5 +1,7 @@
 package com.yeternal.elf.model.vo;
 
+import lombok.Data;
+
 /**
  * <p>
  *
@@ -13,5 +15,6 @@ package com.yeternal.elf.model.vo;
  * @version: V1.0
  * @modified: eternallove
  */
+@Data
 public class ExploreVO {
 }

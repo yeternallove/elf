@@ -36,6 +36,7 @@ public interface Constant {
     int EXPLORE = 1;
     int SEAL = 2;
     int SECRET = 3;
+    int NIGIMITAMA = 4;
 
     /**
      * 默认当前页

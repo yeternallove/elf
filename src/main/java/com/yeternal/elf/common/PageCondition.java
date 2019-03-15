@@ -1,5 +1,6 @@
 package com.yeternal.elf.common;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -44,5 +45,9 @@ public class PageCondition implements Serializable {
             return Constant.DEFAULT_SIZE;
         }
         return pageSize;
+    }
+
+    public <T> Page<T> page() {
+        return new Page<>(getCurrentPage(), getPageSize());
     }
 }

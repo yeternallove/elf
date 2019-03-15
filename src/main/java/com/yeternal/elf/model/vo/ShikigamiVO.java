@@ -1,5 +1,9 @@
 package com.yeternal.elf.model.vo;
 
+import lombok.Data;
+
+import java.util.Date;
+
 /**
  * <p>
  *
@@ -13,5 +17,35 @@ package com.yeternal.elf.model.vo;
  * @version: V1.0
  * @modified: eternallove
  */
+@Data
 public class ShikigamiVO {
+    /**
+     * 主键
+     */
+    private Long id;
+
+    /**
+     * 式神名
+     */
+    private String name;
+
+    /**
+     * 稀有度
+     */
+    private Integer rare;
+
+    /**
+     * 别称
+     */
+    private String alias;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 上次更新时间
+     */
+    private Date lastUpdateTime;
 }

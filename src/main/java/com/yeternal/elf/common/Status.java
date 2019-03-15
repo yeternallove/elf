@@ -84,7 +84,11 @@ public enum Status {
     /**
      * 数据库连接异常
      */
-    CONNECTION_FAILED(605, "数据库连接异常");
+    CONNECTION_FAILED(605, "数据库连接异常"),
+    /**
+     * 已存在不能重复
+     */
+    EXISTING_REPEAT(1001, "已存在不能重复");
 
     /**
      * 状态码

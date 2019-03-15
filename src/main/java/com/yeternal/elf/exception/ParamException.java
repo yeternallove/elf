@@ -17,7 +17,6 @@ import com.yeternal.elf.common.Status;
  * @modified: eternallove
  */
 public class ParamException extends BaseException {
-    private static final long serialVersionUID = 1301815127343008153L;
 
     private final static Status DEFAULT_STATUS = Status.PARAM_NOT_NULL;
 
@@ -34,7 +33,7 @@ public class ParamException extends BaseException {
     }
 
     public ParamException(Integer code, String message, Object data) {
-        super(200, code, message, data);
+        super(Status.OK.getCode(), code, message, data);
     }
 
 }

@@ -75,8 +75,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public PageResult<UserVO> listUser(UserQuery userQuery) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        Page<User> page = new Page<>(userQuery.getCurrentPage(), userQuery.getPageSize());
-        List<UserVO> list = page(page, wrapper).getRecords().stream().map(BeanConverter::toUserVO).collect(Collectors.toList());
+        List<UserVO> list = page(userQuery.page(), wrapper).getRecords().stream().map(BeanConverter::toUserVO).collect(Collectors.toList());
         return PageResult.of(count(), list);
     }
 
@@ -84,7 +83,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public UserVO login(LoginRequest loginRequest) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         String name = loginRequest.getUsernameOrEmailOrPhone();
-        wrapper.lambda().or(n -> n.eq(User::getName, name).eq(User::getEmail, name).eq(User::getPhoneNumber, name));
+        wrapper.lambda().eq(User::getName, name).or().eq(User::getEmail, name).or().eq(User::getPhoneNumber, name);
         User user = getOne(wrapper);
         if (Objects.nonNull(user) && checkPassword(loginRequest.getPassword(), user.getSalt(), user.getPassword())) {
             return BeanConverter.toUserVO(user);

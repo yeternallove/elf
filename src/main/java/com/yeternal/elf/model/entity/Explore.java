@@ -54,6 +54,7 @@ public class Explore implements Serializable {
      * {@link com.yeternal.elf.common.Constant#EXPLORE}:探索
      * {@link com.yeternal.elf.common.Constant#SEAL}:妖气封印
      * {@link com.yeternal.elf.common.Constant#SECRET}:秘闻
+     * {@link com.yeternal.elf.common.Constant#NIGIMITAMA}:御魂
      */
     private String type;
 

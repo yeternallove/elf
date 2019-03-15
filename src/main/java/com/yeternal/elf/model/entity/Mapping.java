@@ -45,6 +45,11 @@ public class Mapping implements Serializable {
     private Long exploreId;
 
     /**
+     * 数量
+     */
+    private Integer count;
+
+    /**
      * 备注
      */
     private String note;

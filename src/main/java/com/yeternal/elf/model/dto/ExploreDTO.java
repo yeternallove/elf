@@ -21,7 +21,29 @@ import java.util.List;
  * @modified: eternallove
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class ExploreDTO extends Explore {
-    private List<Mapping> list;
+public class ExploreDTO   {
+    /**
+     * 主键
+     */
+    private Long id;
+
+    /**
+     * 探索名称
+     */
+    private String name;
+
+    /**
+     * 关卡数
+     */
+    private Integer number;
+
+    /**
+     * 类型
+     * {@link com.yeternal.elf.common.Constant#EXPLORE}:探索
+     * {@link com.yeternal.elf.common.Constant#SEAL}:妖气封印
+     * {@link com.yeternal.elf.common.Constant#SECRET}:秘闻
+     * {@link com.yeternal.elf.common.Constant#NIGIMITAMA}:御魂
+     */
+    private String type;
+    private List<MappingDTO> list;
 }

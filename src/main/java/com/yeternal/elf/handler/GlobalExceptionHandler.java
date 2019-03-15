@@ -44,8 +44,9 @@ public class GlobalExceptionHandler {
             log.error("【全局异常拦截】HttpRequestMethodNotSupportedException: 当前请求方式 {}, 支持请求方式 {}", ((HttpRequestMethodNotSupportedException) e).getMethod(), JSONUtil.toJsonStr(((HttpRequestMethodNotSupportedException) e).getSupportedHttpMethods()));
             return R.ofStatus(Status.HTTP_BAD_METHOD);
         } else if (e instanceof MethodArgumentNotValidException) {
-            log.error("【全局异常拦截】MethodArgumentNotValidException", e);
-            return R.of(Status.BAD_REQUEST.getCode(), ((MethodArgumentNotValidException) e).getBindingResult()
+            MethodArgumentNotValidException me = (MethodArgumentNotValidException) e;
+            log.error("【全局异常拦截】MethodArgumentNotValidException: {}", me.getBindingResult().getTarget());
+            return R.of(Status.BAD_REQUEST.getCode(), me.getBindingResult()
                     .getAllErrors()
                     .get(0)
                     .getDefaultMessage(), null);
