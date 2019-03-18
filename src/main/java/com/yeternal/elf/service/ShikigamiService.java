@@ -1,7 +1,7 @@
 package com.yeternal.elf.service;
 
 import com.yeternal.elf.common.PageResult;
-import com.yeternal.elf.model.dto.ShikigamiDTO;
+import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.query.ShikigamiQuery;
 import com.yeternal.elf.model.vo.ShikigamiVO;
 
@@ -23,9 +23,9 @@ public interface ShikigamiService {
     /**
      * 新增式神
      *
-     * @param shikigamiDTO {@link ShikigamiDTO}
+     * @param shikigamiDTO {@link ShikigamiRequest}
      */
-    void save(ShikigamiDTO shikigamiDTO);
+    void save(ShikigamiRequest shikigamiDTO);
 
     /**
      * 删除式神
@@ -38,9 +38,9 @@ public interface ShikigamiService {
      * 更新式神（不支持密码修改）
      *
      * @param id      式神id
-     * @param shikigamiDTO {@link ShikigamiDTO}
+     * @param shikigamiDTO {@link ShikigamiRequest}
      */
-    void update(Long id, ShikigamiDTO shikigamiDTO);
+    void update(Long id, ShikigamiRequest shikigamiDTO);
     
 
     /**

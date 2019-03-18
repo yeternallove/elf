@@ -1,9 +1,9 @@
 package com.yeternal.elf.controller;
 
 import com.yeternal.elf.common.R;
-import com.yeternal.elf.model.dto.UserDTO;
+import com.yeternal.elf.model.payload.SysUserRequest;
 import com.yeternal.elf.model.payload.PasswordRequest;
-import com.yeternal.elf.model.query.UserQuery;
+import com.yeternal.elf.model.query.SysUserQuery;
 import com.yeternal.elf.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,11 +34,11 @@ public class UserController {
     /**
      * 新增用户
      *
-     * @param userDTO {@link UserDTO}
+     * @param userDTO {@link SysUserRequest}
      * @return {@link R}
      */
     @PostMapping
-    public R save(@Validated @RequestBody UserDTO userDTO) {
+    public R save(@Validated @RequestBody SysUserRequest userDTO) {
         userService.save(userDTO);
         return R.ofSuccess();
     }
@@ -59,11 +59,11 @@ public class UserController {
      * 更新用户信息
      *
      * @param id      用户id
-     * @param userDTO {@link UserDTO}
+     * @param userDTO {@link SysUserRequest}
      * @return {@link R}
      */
     @PutMapping("/{id}")
-    public R update(@PathVariable Long id, @Validated @RequestBody UserDTO userDTO) {
+    public R update(@PathVariable Long id, @Validated @RequestBody SysUserRequest userDTO) {
         userService.update(id, userDTO);
         return R.ofSuccess();
     }
@@ -106,11 +106,11 @@ public class UserController {
     /**
      * 获取用户列表
      *
-     * @param userQuery {@link UserQuery}
+     * @param userQuery {@link SysUserQuery}
      * @return {@link R}
      */
     @GetMapping("/list")
-    public R listUser(UserQuery userQuery) {
+    public R listUser(SysUserQuery userQuery) {
         return R.ofSuccess(userService.listUser(userQuery));
     }
 

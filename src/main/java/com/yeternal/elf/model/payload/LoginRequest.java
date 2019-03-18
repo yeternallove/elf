@@ -1,5 +1,6 @@
 package com.yeternal.elf.model.payload;
 
+import com.yeternal.elf.common.Constraints;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

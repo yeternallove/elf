@@ -31,7 +31,7 @@ import static com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE;
 @AllArgsConstructor
 @Accessors(chain = true)
 @TableName("elf_user")
-public class User implements Serializable {
+public class SysUser implements Serializable {
     private static final long serialVersionUID = -8250490250545406986L;
     /**
      * 主键

@@ -1,7 +1,7 @@
 package com.yeternal.elf.service;
 
 import com.yeternal.elf.common.PageResult;
-import com.yeternal.elf.model.dto.ExploreDTO;
+import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.query.ExploreQuery;
 import com.yeternal.elf.model.vo.ExploreVO;
 
@@ -23,9 +23,9 @@ public interface ExploreService {
     /**
      * 新增探索
      *
-     * @param exploreDTO {@link ExploreDTO}
+     * @param exploreDTO {@link ExploreRequest}
      */
-    void save(ExploreDTO exploreDTO);
+    void save(ExploreRequest exploreDTO);
 
     /**
      * 删除探索
@@ -38,9 +38,9 @@ public interface ExploreService {
      * 更新探索
      *
      * @param id         探索id
-     * @param exploreDTO {@link ExploreDTO}
+     * @param exploreDTO {@link ExploreRequest}
      */
-    void update(Long id, ExploreDTO exploreDTO);
+    void update(Long id, ExploreRequest exploreDTO);
 
 
     /**

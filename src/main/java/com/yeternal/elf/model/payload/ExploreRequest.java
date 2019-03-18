@@ -1,9 +1,7 @@
-package com.yeternal.elf.model.dto;
+package com.yeternal.elf.model.payload;
 
-import com.yeternal.elf.model.entity.Explore;
 import com.yeternal.elf.model.entity.Mapping;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ import java.util.List;
  * @modified: eternallove
  */
 @Data
-public class ExploreDTO   {
+public class ExploreRequest {
     /**
      * 主键
      */
@@ -45,5 +43,6 @@ public class ExploreDTO   {
      * {@link com.yeternal.elf.common.Constant#NIGIMITAMA}:御魂
      */
     private String type;
-    private List<MappingDTO> list;
+
+    private List<Mapping> list;
 }

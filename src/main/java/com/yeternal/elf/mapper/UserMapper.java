@@ -1,7 +1,7 @@
 package com.yeternal.elf.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.yeternal.elf.model.entity.User;
+import com.yeternal.elf.model.entity.SysUser;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,5 +18,5 @@ import org.springframework.stereotype.Component;
  * @modified: eternallove
  */
 @Component
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<SysUser> {
 }

@@ -1,4 +1,4 @@
-package com.yeternal.elf.model.dto;
+package com.yeternal.elf.model.payload;
 
 import lombok.Data;
 
@@ -16,7 +16,7 @@ import lombok.Data;
  * @modified: eternallove
  */
 @Data
-public class ShikigamiDTO {
+public class ShikigamiRequest {
     /**
      * 主键
      */

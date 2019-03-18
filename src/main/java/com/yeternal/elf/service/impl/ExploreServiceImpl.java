@@ -1,16 +1,20 @@
 package com.yeternal.elf.service.impl;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yeternal.elf.common.PageResult;
 import com.yeternal.elf.mapper.ExploreMapper;
-import com.yeternal.elf.model.dto.ExploreDTO;
 import com.yeternal.elf.model.entity.Explore;
+import com.yeternal.elf.model.entity.Mapping;
+import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.query.ExploreQuery;
 import com.yeternal.elf.model.vo.ExploreVO;
 import com.yeternal.elf.service.ExploreService;
+import com.yeternal.elf.service.MappingService;
 import com.yeternal.elf.util.BeanConverter;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,19 +33,29 @@ import java.util.stream.Collectors;
  * @modified: eternallove
  */
 @Service
+@AllArgsConstructor
 public class ExploreServiceImpl extends ServiceImpl<ExploreMapper, Explore> implements ExploreService {
+
+    private final MappingService mappingService;
+
     @Override
-    public void save(ExploreDTO exploreDTO) {
+    @Transactional(rollbackFor = Exception.class)
+    public void save(ExploreRequest exploreDTO) {
         save(BeanConverter.toExplore(exploreDTO));
+        mappingService.saveBatch(exploreDTO.getList());
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void delete(Long id) {
         removeById(id);
+        QueryWrapper<Mapping> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(Mapping::getExploreId, id);
+        mappingService.remove(wrapper);
     }
 
     @Override
-    public void update(Long id, ExploreDTO exploreDTO) {
+    public void update(Long id, ExploreRequest exploreDTO) {
         updateById(BeanConverter.toExplore(exploreDTO));
     }
 

@@ -3,9 +3,9 @@ package com.yeternal.elf.service;
 import com.yeternal.elf.common.PageResult;
 import com.yeternal.elf.model.payload.LoginRequest;
 import com.yeternal.elf.model.payload.PasswordRequest;
-import com.yeternal.elf.model.dto.UserDTO;
-import com.yeternal.elf.model.query.UserQuery;
-import com.yeternal.elf.model.vo.UserVO;
+import com.yeternal.elf.model.payload.SysUserRequest;
+import com.yeternal.elf.model.query.SysUserQuery;
+import com.yeternal.elf.model.vo.SysUserVO;
 
 /**
  * <p>
@@ -25,9 +25,9 @@ public interface UserService {
     /**
      * 新增用户
      *
-     * @param userDTO {@link UserDTO}
+     * @param userDTO {@link SysUserRequest}
      */
-    void save(UserDTO userDTO);
+    void save(SysUserRequest userDTO);
 
     /**
      * 删除用户
@@ -40,9 +40,9 @@ public interface UserService {
      * 更新用户（不支持密码修改）
      *
      * @param id      用户id
-     * @param userDTO {@link UserDTO}
+     * @param userDTO {@link SysUserRequest}
      */
-    void update(Long id, UserDTO userDTO);
+    void update(Long id, SysUserRequest userDTO);
 
     /**
      * 更新用户密码
@@ -56,23 +56,23 @@ public interface UserService {
      * 获取单个用户通过id
      *
      * @param id 用户id
-     * @return {@link UserVO}
+     * @return {@link SysUserVO}
      */
-    UserVO getUser(Long id);
+    SysUserVO getUser(Long id);
 
     /**
      * 获取用户列表
      *
-     * @param userQuery {@link UserQuery}
-     * @return {@link UserVO}
+     * @param userQuery {@link SysUserQuery}
+     * @return {@link SysUserVO}
      */
-    PageResult<UserVO> listUser(UserQuery userQuery);
+    PageResult<SysUserVO> listUser(SysUserQuery userQuery);
 
     /**
      * 获取单个用户通过用户名、邮箱、手机号（符合任一条件）并校验密码
      *
      * @param loginRequest {@link LoginRequest}
-     * @return 登录成功返回 {@link UserVO}
+     * @return 登录成功返回 {@link SysUserVO}
      */
-    UserVO login(LoginRequest loginRequest);
+    SysUserVO login(LoginRequest loginRequest);
 }

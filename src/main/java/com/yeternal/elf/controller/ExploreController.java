@@ -1,7 +1,7 @@
 package com.yeternal.elf.controller;
 
 import com.yeternal.elf.common.R;
-import com.yeternal.elf.model.dto.ExploreDTO;
+import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.query.ExploreQuery;
 import com.yeternal.elf.service.ExploreService;
 import lombok.AllArgsConstructor;
@@ -33,11 +33,11 @@ public class ExploreController {
     /**
      * 新增探索
      *
-     * @param exploreDTO {@link ExploreDTO}
+     * @param exploreDTO {@link ExploreRequest}
      * @return {@link R}
      */
     @PostMapping
-    public R save(@Validated @RequestBody ExploreDTO exploreDTO) {
+    public R save(@Validated @RequestBody ExploreRequest exploreDTO) {
         exploreService.save(exploreDTO);
         return R.ofSuccess();
     }
@@ -58,11 +58,11 @@ public class ExploreController {
      * 更新探索信息
      *
      * @param id         探索id
-     * @param exploreDTO {@link ExploreDTO}
+     * @param exploreDTO {@link ExploreRequest}
      * @return {@link R}
      */
     @PutMapping("/{id}")
-    public R update(@PathVariable Long id, @Validated @RequestBody ExploreDTO exploreDTO) {
+    public R update(@PathVariable Long id, @Validated @RequestBody ExploreRequest exploreDTO) {
         exploreService.update(id, exploreDTO);
         return R.ofSuccess();
     }

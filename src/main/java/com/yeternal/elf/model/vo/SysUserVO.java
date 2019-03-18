@@ -18,7 +18,7 @@ import java.util.Date;
  * @modified: eternallove
  */
 @Data
-public class UserVO {
+public class SysUserVO {
     /**
      * 主键
      */

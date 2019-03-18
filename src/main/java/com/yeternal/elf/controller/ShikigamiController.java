@@ -1,7 +1,7 @@
 package com.yeternal.elf.controller;
 
 import com.yeternal.elf.common.R;
-import com.yeternal.elf.model.dto.ShikigamiDTO;
+import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.query.ShikigamiQuery;
 import com.yeternal.elf.service.ShikigamiService;
 import lombok.AllArgsConstructor;
@@ -33,11 +33,11 @@ public class ShikigamiController {
     /**
      * 新增式神
      *
-     * @param shikigamiDTO {@link ShikigamiDTO}
+     * @param shikigamiDTO {@link ShikigamiRequest}
      * @return {@link R}
      */
     @PostMapping
-    public R save(@Validated @RequestBody ShikigamiDTO shikigamiDTO) {
+    public R save(@Validated @RequestBody ShikigamiRequest shikigamiDTO) {
         shikigamiService.save(shikigamiDTO);
         return R.ofSuccess();
     }
@@ -58,11 +58,11 @@ public class ShikigamiController {
      * 更新式神信息
      *
      * @param id           式神id
-     * @param shikigamiDTO {@link ShikigamiDTO}
+     * @param shikigamiDTO {@link ShikigamiRequest}
      * @return {@link R}
      */
     @PutMapping("/{id}")
-    public R update(@PathVariable Long id, @Validated @RequestBody ShikigamiDTO shikigamiDTO) {
+    public R update(@PathVariable Long id, @Validated @RequestBody ShikigamiRequest shikigamiDTO) {
         shikigamiService.update(id, shikigamiDTO);
         return R.ofSuccess();
     }

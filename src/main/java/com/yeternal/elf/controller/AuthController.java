@@ -3,7 +3,7 @@ package com.yeternal.elf.controller;
 import com.yeternal.elf.common.R;
 import com.yeternal.elf.common.Status;
 import com.yeternal.elf.model.payload.LoginRequest;
-import com.yeternal.elf.model.vo.UserVO;
+import com.yeternal.elf.model.vo.SysUserVO;
 import com.yeternal.elf.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public R login(@Validated @RequestBody LoginRequest loginRequest) {
-        UserVO userVO = userService.login(loginRequest);
+        SysUserVO userVO = userService.login(loginRequest);
         if (Objects.isNull(userVO)) {
             return R.ofStatus(Status.LOGIN_INFO_ERROR);
         }

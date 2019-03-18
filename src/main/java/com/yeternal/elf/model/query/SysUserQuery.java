@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class UserQuery extends PageCondition {
+public class SysUserQuery extends PageCondition {
     /**
      * 用户名
      */

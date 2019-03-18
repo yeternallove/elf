@@ -1,15 +1,15 @@
 package com.yeternal.elf.util;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.yeternal.elf.model.dto.ExploreDTO;
-import com.yeternal.elf.model.dto.ShikigamiDTO;
-import com.yeternal.elf.model.dto.UserDTO;
+import com.yeternal.elf.model.payload.ExploreRequest;
+import com.yeternal.elf.model.payload.ShikigamiRequest;
+import com.yeternal.elf.model.payload.SysUserRequest;
 import com.yeternal.elf.model.entity.Explore;
 import com.yeternal.elf.model.entity.Shikigami;
-import com.yeternal.elf.model.entity.User;
+import com.yeternal.elf.model.entity.SysUser;
 import com.yeternal.elf.model.vo.ExploreVO;
 import com.yeternal.elf.model.vo.ShikigamiVO;
-import com.yeternal.elf.model.vo.UserVO;
+import com.yeternal.elf.model.vo.SysUserVO;
 
 /**
  * <p>
@@ -28,12 +28,12 @@ public class BeanConverter {
 
     //user ##################################################
 
-    public static UserVO toUserVO(User user) {
-        return BeanUtil.toBean(user, UserVO.class);
+    public static SysUserVO toUserVO(SysUser user) {
+        return BeanUtil.toBean(user, SysUserVO.class);
     }
 
-    public static User toUser(UserDTO userDTO) {
-        return BeanUtil.toBean(userDTO, User.class);
+    public static SysUser toUser(SysUserRequest userDTO) {
+        return BeanUtil.toBean(userDTO, SysUser.class);
     }
 
     //Shikigami ##############################################
@@ -42,7 +42,7 @@ public class BeanConverter {
         return BeanUtil.toBean(shikigami, ShikigamiVO.class);
     }
 
-    public static Shikigami toShikigami(ShikigamiDTO shikigamiDTO) {
+    public static Shikigami toShikigami(ShikigamiRequest shikigamiDTO) {
         return BeanUtil.toBean(shikigamiDTO, Shikigami.class);
     }
 
@@ -52,7 +52,7 @@ public class BeanConverter {
         return BeanUtil.toBean(explore, ExploreVO.class);
     }
 
-    public static Explore toExplore(ExploreDTO exploreDTO) {
+    public static Explore toExplore(ExploreRequest exploreDTO) {
         return BeanUtil.toBean(exploreDTO, Explore.class);
     }
 }
