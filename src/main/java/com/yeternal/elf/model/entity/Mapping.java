@@ -10,16 +10,11 @@ import java.io.Serializable;
 
 /**
  * <p>
- *
+ * 映射关系
  * </p>
  *
- * @package: com.yeternal.elf.model.entity
- * @description:
- * @author: eternallove
- * @date: Created in 2019/3/13 18:42
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:18
  */
 @Data
 @NoArgsConstructor

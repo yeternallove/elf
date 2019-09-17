@@ -1,6 +1,6 @@
 package com.yeternal.elf.service;
 
-import com.yeternal.elf.common.PageResult;
+import com.yeternal.elf.common.api.PageResult;
 import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.query.ShikigamiQuery;
 import com.yeternal.elf.model.vo.ShikigamiVO;

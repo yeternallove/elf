@@ -12,13 +12,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * mybatis-plus 配置
  * </p>
  *
- * @package: com.yeternal.elf.config
- * @description: mybatis-plus 配置
- * @author: eternallove
- * @date: Created in 2019/3/5 10:32
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 14:23
  */
 @Configuration
 @EnableTransactionManagement

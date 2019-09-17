@@ -12,13 +12,8 @@ import java.util.Date;
  * 通用字段填充
  * </p>
  *
- * @package: com.xkcoding.orm.mybatis.plus.config
- * @description: 通用字段填充
- * @author: yangkai.shen
- * @date: Created in 2018/11/8 17:40
- * @copyright: Copyright (c) 2018
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 14:00
  */
 @Slf4j
 @Component
@@ -26,15 +21,13 @@ public class CommonFieldHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        log.info("start insert fill ....");
         Date now = new Date();
         this.setInsertFieldValByName("createTime", now, metaObject);
-        this.setInsertFieldValByName("lastUpdateTime", now, metaObject);
+        this.setInsertFieldValByName("updateTime", now, metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        log.info("start update fill ....");
-        this.setUpdateFieldValByName("lastUpdateTime", new Date(), metaObject);
+        this.setUpdateFieldValByName("updateTime", new Date(), metaObject);
     }
 }

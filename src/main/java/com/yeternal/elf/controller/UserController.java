@@ -1,6 +1,6 @@
 package com.yeternal.elf.controller;
 
-import com.yeternal.elf.common.R;
+import com.yeternal.elf.common.api.R;
 import com.yeternal.elf.model.payload.SysUserRequest;
 import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.query.SysUserQuery;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * @version: V1.0
  * @modified: eternallove
  */
+@CrossOrigin
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -40,7 +41,7 @@ public class UserController {
     @PostMapping
     public R save(@Validated @RequestBody SysUserRequest userDTO) {
         userService.save(userDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -52,7 +53,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public R delete(@PathVariable Long id) {
         userService.delete(id);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -65,7 +66,7 @@ public class UserController {
     @PutMapping("/{id}")
     public R update(@PathVariable Long id, @Validated @RequestBody SysUserRequest userDTO) {
         userService.update(id, userDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -77,7 +78,7 @@ public class UserController {
     @PutMapping(value = "/{id}", params = "change")
     public R changePassword(@PathVariable Long id, @Validated @RequestBody PasswordRequest passwordDTO) {
         userService.updatePassword(id, passwordDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -89,7 +90,7 @@ public class UserController {
     @PutMapping(value = "/{id}", params = "reset")
     public R resetPassword(@PathVariable Long id, @Validated @RequestBody PasswordRequest passwordDTO) {
         userService.updatePassword(id, passwordDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -100,7 +101,7 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public R getUser(@PathVariable Long id) {
-        return R.ofSuccess(userService.getUser(id));
+        return R.success(userService.getUser(id));
     }
 
     /**
@@ -111,7 +112,7 @@ public class UserController {
      */
     @GetMapping("/list")
     public R listUser(SysUserQuery userQuery) {
-        return R.ofSuccess(userService.listUser(userQuery));
+        return R.success(userService.listUser(userQuery));
     }
 
 }

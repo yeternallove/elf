@@ -2,6 +2,7 @@ package com.yeternal.elf.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.yeternal.elf.common.constants.Constant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,13 +19,8 @@ import static com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE;
  * 式神实体类
  * </p>
  *
- * @package: com.yeternal.elf.model.entity
- * @description: 式神实体类
- * @author: eternallove
- * @date: Created in 2019/3/13 17:00
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:18
  */
 @Data
 @NoArgsConstructor
@@ -46,13 +42,13 @@ public class Shikigami implements Serializable {
 
     /**
      * 稀有度
-     * {@link com.yeternal.elf.common.Constant#RARE_DEFAULT}:默认（未知）
-     * {@link com.yeternal.elf.common.Constant#RARE_GUA}:呱
-     * {@link com.yeternal.elf.common.Constant#RARE_N}:N
-     * {@link com.yeternal.elf.common.Constant#RARE_R}:R
-     * {@link com.yeternal.elf.common.Constant#RARE_SR}:SR
-     * {@link com.yeternal.elf.common.Constant#RARE_SSR}:SSR
-     * {@link com.yeternal.elf.common.Constant#RARE_SP}:SP
+     * {@link Constant#RARE_DEFAULT}:默认（未知）
+     * {@link Constant#RARE_GUA}:呱
+     * {@link Constant#RARE_N}:N
+     * {@link Constant#RARE_R}:R
+     * {@link Constant#RARE_SR}:SR
+     * {@link Constant#RARE_SSR}:SSR
+     * {@link Constant#RARE_SP}:SP
      */
     private Integer rare;
 
@@ -71,5 +67,5 @@ public class Shikigami implements Serializable {
      * 上次更新时间
      */
     @TableField(fill = INSERT_UPDATE)
-    private Date lastUpdateTime;
+    private Date updateTime;
 }

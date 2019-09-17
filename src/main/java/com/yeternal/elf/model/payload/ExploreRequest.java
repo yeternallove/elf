@@ -1,5 +1,6 @@
 package com.yeternal.elf.model.payload;
 
+import com.yeternal.elf.common.constants.Constant;
 import com.yeternal.elf.model.entity.Mapping;
 import lombok.Data;
 
@@ -37,10 +38,10 @@ public class ExploreRequest {
 
     /**
      * 类型
-     * {@link com.yeternal.elf.common.Constant#EXPLORE}:探索
-     * {@link com.yeternal.elf.common.Constant#SEAL}:妖气封印
-     * {@link com.yeternal.elf.common.Constant#SECRET}:秘闻
-     * {@link com.yeternal.elf.common.Constant#NIGIMITAMA}:御魂
+     * {@link Constant#EXPLORE}:探索
+     * {@link Constant#SEAL}:妖气封印
+     * {@link Constant#SECRET}:秘闻
+     * {@link Constant#NIGIMITAMA}:御魂
      */
     private String type;
 

@@ -1,17 +1,12 @@
-package com.yeternal.elf.common;
+package com.yeternal.elf.common.constants;
 
 /**
  * <p>
  * 常量池
  * </p>
  *
- * @package: com.yeternal.elf.common
- * @description: 常量池
- * @author: eternallove
- * @date: Created in 2019/3/1 17:20
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 13:59
  */
 public interface Constant {
     /**

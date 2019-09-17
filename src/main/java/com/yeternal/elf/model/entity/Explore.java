@@ -2,6 +2,7 @@ package com.yeternal.elf.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.yeternal.elf.common.constants.Constant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,13 +19,8 @@ import static com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE;
  * 探索实体类
  * </p>
  *
- * @package: com.yeternal.elf.model.entity
- * @description: 探索实体类
- * @author: eternallove
- * @date: Created in 2019/3/13 16:59
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:17
  */
 @Data
 @NoArgsConstructor
@@ -51,10 +47,10 @@ public class Explore implements Serializable {
 
     /**
      * 类型
-     * {@link com.yeternal.elf.common.Constant#EXPLORE}:探索
-     * {@link com.yeternal.elf.common.Constant#SEAL}:妖气封印
-     * {@link com.yeternal.elf.common.Constant#SECRET}:秘闻
-     * {@link com.yeternal.elf.common.Constant#NIGIMITAMA}:御魂
+     * {@link Constant#EXPLORE}:探索
+     * {@link Constant#SEAL}:妖气封印
+     * {@link Constant#SECRET}:秘闻
+     * {@link Constant#NIGIMITAMA}:御魂
      */
     private String type;
 
@@ -68,5 +64,5 @@ public class Explore implements Serializable {
      * 上次更新时间
      */
     @TableField(fill = INSERT_UPDATE)
-    private Date lastUpdateTime;
+    private Date updateTime;
 }

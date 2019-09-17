@@ -2,6 +2,7 @@ package com.yeternal.elf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * <p>
@@ -17,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @modified: eternallove
  */
 @SpringBootApplication
+@EnableTransactionManagement
 public class Application {
 
     public static void main(String[] args) {

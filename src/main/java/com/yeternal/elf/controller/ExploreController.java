@@ -1,13 +1,17 @@
 package com.yeternal.elf.controller;
 
-import com.yeternal.elf.common.R;
+import com.yeternal.elf.common.api.R;
+import com.yeternal.elf.model.entity.Mapping;
 import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.query.ExploreQuery;
 import com.yeternal.elf.service.ExploreService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.After;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
  * @version: V1.0
  * @modified: eternallove
  */
+@CrossOrigin
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -39,7 +44,7 @@ public class ExploreController {
     @PostMapping
     public R save(@Validated @RequestBody ExploreRequest exploreDTO) {
         exploreService.save(exploreDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -51,7 +56,7 @@ public class ExploreController {
     @DeleteMapping("/{id}")
     public R delete(@PathVariable Long id) {
         exploreService.delete(id);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -64,7 +69,13 @@ public class ExploreController {
     @PutMapping("/{id}")
     public R update(@PathVariable Long id, @Validated @RequestBody ExploreRequest exploreDTO) {
         exploreService.update(id, exploreDTO);
-        return R.ofSuccess();
+        return R.success();
+    }
+
+    @PutMapping("/mapping/{id}")
+    public R updateMapping(@PathVariable Long id, @Validated @RequestBody List<Mapping> mappings) {
+        exploreService.updateMapping(id, mappings);
+        return R.success();
     }
 
     /**
@@ -75,7 +86,7 @@ public class ExploreController {
      */
     @GetMapping("/{id}")
     public R getExplore(@PathVariable Long id) {
-        return R.ofSuccess(exploreService.getExplore(id));
+        return R.success(exploreService.getExplore(id));
     }
 
     /**
@@ -86,6 +97,6 @@ public class ExploreController {
      */
     @GetMapping("/list")
     public R listExplore(ExploreQuery exploreQuery) {
-        return R.ofSuccess(exploreService.listExplore(exploreQuery));
+        return R.success(exploreService.listExplore(exploreQuery));
     }
 }

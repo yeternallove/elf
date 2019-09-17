@@ -1,6 +1,6 @@
 package com.yeternal.elf.controller;
 
-import com.yeternal.elf.common.R;
+import com.yeternal.elf.common.api.R;
 import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.query.ShikigamiQuery;
 import com.yeternal.elf.service.ShikigamiService;
@@ -14,14 +14,10 @@ import org.springframework.web.bind.annotation.*;
  *
  * </p>
  *
- * @package: com.yeternal.elf.controller
- * @description:
- * @author: eternallove
- * @date: Created in 2019/3/13 16:33
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:37
  */
+@CrossOrigin
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -39,7 +35,7 @@ public class ShikigamiController {
     @PostMapping
     public R save(@Validated @RequestBody ShikigamiRequest shikigamiDTO) {
         shikigamiService.save(shikigamiDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -51,7 +47,7 @@ public class ShikigamiController {
     @DeleteMapping("/{id}")
     public R delete(@PathVariable Long id) {
         shikigamiService.delete(id);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -64,7 +60,7 @@ public class ShikigamiController {
     @PutMapping("/{id}")
     public R update(@PathVariable Long id, @Validated @RequestBody ShikigamiRequest shikigamiDTO) {
         shikigamiService.update(id, shikigamiDTO);
-        return R.ofSuccess();
+        return R.success();
     }
 
     /**
@@ -75,7 +71,7 @@ public class ShikigamiController {
      */
     @GetMapping("/{id}")
     public R getShikigami(@PathVariable Long id) {
-        return R.ofSuccess(shikigamiService.getShikigami(id));
+        return R.success(shikigamiService.getShikigami(id));
     }
 
     /**
@@ -86,7 +82,7 @@ public class ShikigamiController {
      */
     @GetMapping("/list")
     public R listShikigami(ShikigamiQuery shikigamiQuery) {
-        return R.ofSuccess(shikigamiService.listShikigami(shikigamiQuery));
+        return R.success(shikigamiService.listShikigami(shikigamiQuery));
     }
 
 }

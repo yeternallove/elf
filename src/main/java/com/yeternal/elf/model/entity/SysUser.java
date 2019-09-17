@@ -2,6 +2,7 @@ package com.yeternal.elf.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.yeternal.elf.common.constants.Constant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,13 +19,8 @@ import static com.baomidou.mybatisplus.annotation.FieldFill.INSERT_UPDATE;
  * 用户实体类
  * </p>
  *
- * @package: com.yeternal.elf.model
- * @description: 用户实体类
- * @author: eternallove
- * @date: Created in 2019/3/2 14:07
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:19
  */
 @Data
 @NoArgsConstructor
@@ -65,17 +61,11 @@ public class SysUser implements Serializable {
 
     /**
      * 状态
-     * {@link com.yeternal.elf.common.Constant#USER_DELETE}:逻辑删除
-     * {@link com.yeternal.elf.common.Constant#USER_DISABLE}:禁用
-     * {@link com.yeternal.elf.common.Constant#USER_ENABLE}:启用
+     * {@link Constant#USER_DELETE}:逻辑删除
+     * {@link Constant#USER_DISABLE}:禁用
+     * {@link Constant#USER_ENABLE}:启用
      */
     private Integer status;
-
-    /**
-     * 创建时间
-     */
-    @TableField(fill = INSERT)
-    private Date createTime;
 
     /**
      * 上次登录时间
@@ -83,8 +73,15 @@ public class SysUser implements Serializable {
     private Date lastLoginTime;
 
     /**
+     * 创建时间
+     */
+    @TableField(fill = INSERT)
+    private Date createTime;
+
+
+    /**
      * 上次更新时间
      */
     @TableField(fill = INSERT_UPDATE)
-    private Date lastUpdateTime;
+    private Date updateTime;
 }

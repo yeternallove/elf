@@ -1,6 +1,5 @@
 package com.yeternal.elf.model.payload;
 
-import com.yeternal.elf.common.Constraints;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -10,13 +9,8 @@ import javax.validation.constraints.NotBlank;
  * 登录请求参数
  * </p>
  *
- * @package: com.yeternal.elf.model.payload
- * @description: 登录请求参数
- * @author: yangkai.shen
- * @date: Created in 2018-12-10 15:52
- * @copyright: Copyright (c) 2018
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:20
  */
 @Data
 public class LoginRequest {

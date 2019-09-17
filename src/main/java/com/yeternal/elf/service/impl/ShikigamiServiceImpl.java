@@ -4,9 +4,9 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yeternal.elf.common.PageResult;
-import com.yeternal.elf.common.Status;
-import com.yeternal.elf.exception.ElfException;
+import com.yeternal.elf.common.api.ElfResultCode;
+import com.yeternal.elf.common.api.PageResult;
+import com.yeternal.elf.exception.ServiceException;
 import com.yeternal.elf.mapper.ShikigamiMapper;
 import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.entity.Shikigami;
@@ -42,7 +42,7 @@ public class ShikigamiServiceImpl extends ServiceImpl<ShikigamiMapper, Shikigami
         wrapper.lambda().eq(Shikigami::getName, shikigamiDTO.getName());
         Shikigami one = getOne(wrapper);
         if (ObjectUtil.isNotNull(one)) {
-            throw new ElfException(Status.EXISTING_REPEAT);
+            throw new ServiceException(ElfResultCode.EXISTING_REPEAT);
         }
         save(BeanConverter.toShikigami(shikigamiDTO));
     }

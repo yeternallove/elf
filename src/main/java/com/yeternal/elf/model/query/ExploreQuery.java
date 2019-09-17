@@ -1,19 +1,14 @@
 package com.yeternal.elf.model.query;
 
-import com.yeternal.elf.common.PageCondition;
+import com.yeternal.elf.common.api.PageQuery;
 
 /**
  * <p>
- *
+ * 探索查询
  * </p>
  *
- * @package: com.yeternal.elf.model.query
- * @description:
- * @author: eternallove
- * @date: Created in 2019/3/13 20:19
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:15
  */
-public class ExploreQuery extends PageCondition {
+public class ExploreQuery extends PageQuery {
 }

@@ -1,24 +1,25 @@
 package com.yeternal.elf.exception;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
- * @package: com.yeternal.elf.exception
- * @description:
- * @author: eternallove
- * @date: Created in 2018/11/16 13:46
- * @copyright: Copyright (c) 2018
- * @version: V1.0
- * @modified: eternallove
+ * <p>
+ * 基础异常
+ * </p>
+ *
+ * @author eternallove
+ * @date Created in 2019/9/17 15:30
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@EqualsAndHashCode(callSuper = true)
 public class BaseException extends RuntimeException {
-    private Integer httpCode;
-    private Integer code;
-    private String message;
-    private Object data;
+    private final Integer httpCode;
+    private final Integer code;
+    private final String message;
+    private final Object data;
 
     public BaseException(Integer httpCode, Integer code, String message, Object data) {
         super(message);
@@ -27,4 +28,9 @@ public class BaseException extends RuntimeException {
         this.message = message;
         this.data = data;
     }
+
+    public BaseException(Integer code, String message, Object data) {
+        this(HttpServletResponse.SC_OK, code, message, data);
+    }
+
 }

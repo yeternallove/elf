@@ -1,6 +1,10 @@
 package com.yeternal.elf.model.vo;
 
+import com.yeternal.elf.model.entity.Explore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +20,8 @@ import lombok.Data;
  * @modified: eternallove
  */
 @Data
-public class ExploreVO {
+@EqualsAndHashCode(callSuper = true)
+public class ExploreVO extends Explore {
+
+    List<MappingVO> mappingList;
 }

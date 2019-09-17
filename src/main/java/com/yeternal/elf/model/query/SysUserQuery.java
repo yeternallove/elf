@@ -1,25 +1,20 @@
 package com.yeternal.elf.model.query;
 
-import com.yeternal.elf.common.PageCondition;
+import com.yeternal.elf.common.api.PageQuery;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- *
+ * 用户查询
  * </p>
  *
- * @package: com.yeternal.elf.model.QO
- * @description:
- * @author: eternallove
- * @date: Created in 2019/3/4 14:35
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 15:16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SysUserQuery extends PageCondition {
+public class SysUserQuery extends PageQuery {
     /**
      * 用户名
      */
@@ -41,17 +36,8 @@ public class SysUserQuery extends PageCondition {
     private Integer status;
 
     /**
-     * 创建时间
-     */
-    private Long createTime;
-
-    /**
      * 上次登录时间
      */
     private Long lastLoginTime;
 
-    /**
-     * 上次更新时间
-     */
-    private Long lastUpdateTime;
 }

@@ -1,17 +1,13 @@
 package com.yeternal.elf.controller;
 
-import com.yeternal.elf.common.R;
-import com.yeternal.elf.common.Status;
+import com.yeternal.elf.common.api.R;
 import com.yeternal.elf.model.payload.LoginRequest;
 import com.yeternal.elf.model.vo.SysUserVO;
 import com.yeternal.elf.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
@@ -28,6 +24,7 @@ import java.util.Objects;
  * @version: V1.0
  * @modified: eternallove
  */
+@CrossOrigin
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -40,13 +37,13 @@ public class AuthController {
     public R login(@Validated @RequestBody LoginRequest loginRequest) {
         SysUserVO userVO = userService.login(loginRequest);
         if (Objects.isNull(userVO)) {
-            return R.ofStatus(Status.LOGIN_INFO_ERROR);
+            return R.fail();
         }
-        return R.ofSuccess(userVO);
+        return R.success(userVO);
     }
 
     @PostMapping("/logout")
     public R logout() {
-        return R.ofSuccess();
+        return R.success();
     }
 }

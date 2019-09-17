@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yeternal.elf.common.PageResult;
+import com.yeternal.elf.common.api.PageResult;
 import com.yeternal.elf.mapper.UserMapper;
 import com.yeternal.elf.model.payload.SysUserRequest;
 import com.yeternal.elf.model.entity.SysUser;

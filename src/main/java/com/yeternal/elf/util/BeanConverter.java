@@ -1,6 +1,7 @@
 package com.yeternal.elf.util;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.yeternal.elf.model.entity.Mapping;
 import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.payload.SysUserRequest;
@@ -8,8 +9,11 @@ import com.yeternal.elf.model.entity.Explore;
 import com.yeternal.elf.model.entity.Shikigami;
 import com.yeternal.elf.model.entity.SysUser;
 import com.yeternal.elf.model.vo.ExploreVO;
+import com.yeternal.elf.model.vo.MappingVO;
 import com.yeternal.elf.model.vo.ShikigamiVO;
 import com.yeternal.elf.model.vo.SysUserVO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -48,8 +52,11 @@ public class BeanConverter {
 
     //Explore ##############################################
 
-    public static ExploreVO toExploreVO(Explore explore) {
-        return BeanUtil.toBean(explore, ExploreVO.class);
+    public static ExploreVO toExploreVO(Explore explore, List<MappingVO> list) {
+        ExploreVO exploreVO = BeanUtil.toBean(explore, ExploreVO.class);
+        BeanUtil.copyProperties(explore,exploreVO);
+        exploreVO.setMappingList(list);
+        return exploreVO;
     }
 
     public static Explore toExplore(ExploreRequest exploreDTO) {

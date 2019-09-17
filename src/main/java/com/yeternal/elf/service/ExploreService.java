@@ -1,22 +1,21 @@
 package com.yeternal.elf.service;
 
-import com.yeternal.elf.common.PageResult;
+import com.yeternal.elf.common.api.PageResult;
+import com.yeternal.elf.model.entity.Explore;
+import com.yeternal.elf.model.entity.Mapping;
 import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.query.ExploreQuery;
 import com.yeternal.elf.model.vo.ExploreVO;
+
+import java.util.List;
 
 /**
  * <p>
  * 探索管理
  * </p>
  *
- * @package: com.yeternal.elf.service
- * @description: 探索管理
- * @author: eternallove
- * @date: Created in 2019/3/13 18:46
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/17 14:54
  */
 public interface ExploreService {
 
@@ -42,6 +41,13 @@ public interface ExploreService {
      */
     void update(Long id, ExploreRequest exploreDTO);
 
+    /**
+     * 更新探索映射
+     *
+     * @param id       探索id
+     * @param mappings {@link Mapping}
+     */
+    void updateMapping(Long id, List<Mapping> mappings);
 
     /**
      * 获取单个探索通过id
@@ -57,6 +63,6 @@ public interface ExploreService {
      * @param exploreQuery {@link ExploreQuery}
      * @return {@link ExploreVO}
      */
-    PageResult<ExploreVO> listExplore(ExploreQuery exploreQuery);
+    PageResult<Explore> listExplore(ExploreQuery exploreQuery);
 
 }

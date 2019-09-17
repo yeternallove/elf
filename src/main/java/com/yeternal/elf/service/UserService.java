@@ -1,6 +1,6 @@
 package com.yeternal.elf.service;
 
-import com.yeternal.elf.common.PageResult;
+import com.yeternal.elf.common.api.PageResult;
 import com.yeternal.elf.model.payload.LoginRequest;
 import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.payload.SysUserRequest;
