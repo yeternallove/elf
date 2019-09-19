@@ -5,9 +5,9 @@ import com.yeternal.elf.model.entity.Mapping;
 import com.yeternal.elf.model.payload.ExploreRequest;
 import com.yeternal.elf.model.query.ExploreQuery;
 import com.yeternal.elf.service.ExploreService;
+import com.yeternal.elf.util.Func;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.After;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -97,6 +97,7 @@ public class ExploreController {
      */
     @GetMapping("/list")
     public R listExplore(ExploreQuery exploreQuery) {
+        Func.checkPageQuery(exploreQuery);
         return R.success(exploreService.listExplore(exploreQuery));
     }
 }

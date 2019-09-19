@@ -33,7 +33,9 @@ public class BeanConverter {
     //user ##################################################
 
     public static SysUserVO toUserVO(SysUser user) {
-        return BeanUtil.toBean(user, SysUserVO.class);
+        SysUserVO vo = BeanUtil.toBean(user, SysUserVO.class);
+        vo.setLastUpdateTime(user.getUpdateTime());
+        return vo;
     }
 
     public static SysUser toUser(SysUserRequest userDTO) {
@@ -54,7 +56,7 @@ public class BeanConverter {
 
     public static ExploreVO toExploreVO(Explore explore, List<MappingVO> list) {
         ExploreVO exploreVO = BeanUtil.toBean(explore, ExploreVO.class);
-        BeanUtil.copyProperties(explore,exploreVO);
+        BeanUtil.copyProperties(explore, exploreVO);
         exploreVO.setMappingList(list);
         return exploreVO;
     }

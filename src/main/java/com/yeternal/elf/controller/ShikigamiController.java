@@ -4,6 +4,7 @@ import com.yeternal.elf.common.api.R;
 import com.yeternal.elf.model.payload.ShikigamiRequest;
 import com.yeternal.elf.model.query.ShikigamiQuery;
 import com.yeternal.elf.service.ShikigamiService;
+import com.yeternal.elf.util.Func;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -82,6 +83,7 @@ public class ShikigamiController {
      */
     @GetMapping("/list")
     public R listShikigami(ShikigamiQuery shikigamiQuery) {
+        Func.checkPageQuery(shikigamiQuery);
         return R.success(shikigamiService.listShikigami(shikigamiQuery));
     }
 

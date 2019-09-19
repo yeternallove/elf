@@ -9,13 +9,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 启动类
  * </p>
  *
- * @package: com.yeternal.elf
- * @description: 启动类
- * @author: eternallove
- * @date: Created in 2019/3/1 17:17
- * @copyright: Copyright (c) 2019
- * @version: V1.0
- * @modified: eternallove
+ * @author eternallove
+ * @date Created in 2019/9/19 17:10
  */
 @SpringBootApplication
 @EnableTransactionManagement

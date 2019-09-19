@@ -5,6 +5,7 @@ import com.yeternal.elf.model.payload.SysUserRequest;
 import com.yeternal.elf.model.payload.PasswordRequest;
 import com.yeternal.elf.model.query.SysUserQuery;
 import com.yeternal.elf.service.UserService;
+import com.yeternal.elf.util.Func;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -112,6 +113,7 @@ public class UserController {
      */
     @GetMapping("/list")
     public R listUser(SysUserQuery userQuery) {
+        Func.checkPageQuery(userQuery);
         return R.success(userService.listUser(userQuery));
     }
 
