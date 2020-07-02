@@ -15,7 +15,7 @@
     <hutool.version>4.6.6</hutool.version>
     <guava.version>28.1-jre</guava.version>
     <mybatis.plus.version>3.2.0</mybatis.plus.version>
-    <mysql.version>8.0.12</mysql.version>
+    <mysql.version>8.0.16</mysql.version>
   </properties>
 
   <parent>
